@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section>
+    {% for photo in object_list %}
+<h1 class="Works-header">{{ photo.title }}</h1>
+    {% endfor %}
+    <div class="works-page-container">
+        <div class="row no-gutters" id="gallery" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+            {% for photo in object_list %}
+            <div class="col-6 col-sm-3 col-lg-3">
+                    <img class="w-100 page-image" src="{{ photo.image.url }}" alt="First image" data-target="#carouselExample" data-slide-to="0">
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+
+    </section>
+{% endblock %}

@@ -1,0 +1,373 @@
+body {
+  background-color: #f2f3f7;
+}
+
+/*------------------------------------------------------------ Nav bar*/
+
+.nav {
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 20px;
+}
+
+.nav-item {
+  text-align: center;
+  margin: 0;
+}
+
+.nav-link {
+  color: #1e2126;
+  display: block;
+}
+
+.nav-link:hover {
+  color: #c4c9d1;
+}
+
+.nav {
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .navbar {
+    display: inline;
+  }
+  .main-bar {
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    display: inline-block;
+  }
+  .nav {
+    border-style: none;
+    display: inline-block;
+    text-align: center;
+    margin-top: 30px;
+    padding-bottom: 20px;
+  }
+  .nav-item {
+    display: inline-block;
+    text-align: center;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 15px;
+    font-weight: 400;
+    position: relative;
+  }
+
+  .navbar-brand {
+    display: none;
+  }
+}
+
+.navbar-light .navbar-nav .active>.nav-link:hover {
+  color: #bec4ce;
+}
+
+/*----------------------------------------------------------------------------------- Home page section*/
+
+section {
+  margin: 0;
+}
+
+.main-image {
+  width: 100%;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.home-header-container {
+  margin: 8% 8%;
+}
+
+.home-header {
+  text-align: center;
+  font-size: 50px;
+}
+
+@media screen and (min-width: 576px) {
+  section {
+    margin-top: 0;
+  }
+  .home-header-container {
+    margin-top: 20px;
+  }
+
+  .home-header {
+    font-size: 40px;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .home-header {
+    font-size: 3.5em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .home-header {
+    font-size: 4.5em;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .home-header {
+    font-size: 7em;
+  }
+}
+
+/* ------------------------------------------------------------------------------------- Footer*/
+
+footer {
+  background-color: #1a1b1c;
+}
+
+.footer-header {
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  text-decoration: none;
+}
+
+.footer-header:hover {
+  color: #4c4c56;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.social-links {
+  text-align: center;
+}
+
+.social-links li a {
+  width: 10px;
+}
+
+.social-links li a i {
+  color: white;
+  width: 40px;
+}
+
+.social-links li a i:hover {
+  color: #4c4c56;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 5%;
+}
+
+/* --------------------------------------------------------------------------- Works*/
+
+.w-100 {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1%;
+}
+
+.w-100:hover {
+  cursor: pointer;
+}
+
+.page-image {
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
+}
+
+@media screen and (min-width: 320px) {
+  .d-block {
+    height: 250px!important;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .w-100 {
+    height: 125px!important;
+  }
+  .d-block {
+    height: 300px!important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .w-100 {
+    height: 175px!important;
+  }
+  .d-block {
+    height: 350px!important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .w-100 {
+    height: 225px!important;
+  }
+  .d-block {
+    height: 400px!important;
+  }
+}
+
+.d-block {
+  object-fit: cover;
+}
+
+.modal-content {
+  width: 95%;
+}
+
+.Works-header {
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+@media screen and (min-width: 576px) {
+  .Works-header {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .Works-header {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+  }
+}
+
+/* --------------------------- Exhibitions*/
+
+.works-video {
+  padding-left: 15px;
+  width: 100%;
+  height: 25%;
+}
+
+.left-list {
+  padding-left: 15px;
+}
+
+.right-list {
+  padding-left: 15px;
+}
+
+.middle-list {
+  padding-left: 15px;
+}
+
+@media screen and (min-width: 576px) {
+  .left-list {
+    text-align: center;
+    font-size: 12px;
+  }
+  .right-list {
+    text-align: center;
+    font-size: 12px;
+  }
+  .middle-list {
+    text-align: center;
+    font-size: 12px;
+  }
+  .works-video {
+    text-align: center;
+    margin: 0 auto;
+  }
+  iframe {
+    text-align: center;
+  }
+  .works-video {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .left-list {
+    font-size: 100%;
+  }
+  .right-list {
+    font-size: 100%;
+  }
+  .middle-list {
+    font-size: 100%;
+  }
+}
+
+p {
+  font-size: 20px;
+}
+
+/* ----------------------------------------------------------------------------- About page*/
+
+.about {
+  width: 90%;
+  margin-left: 2%;
+  text-align: center;
+}
+
+.about-header {
+  margin-left: 2%;
+  text-align: center;
+}
+
+/*------- Image and container -- */
+
+.about-image {
+  width: 95%;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+
+
+}
+
+.about-container {
+  text-align: center;
+}
+
+/*------- Media queries -- */
+
+@media screen and (min-width: 576px) {
+  .about {
+    text-align: left;
+  }
+  .about-image {
+    width: 70%;
+  }
+  .about-container {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .about-image {
+    width: 90%;
+    height: 90%;
+  }
+  .about-header {
+    text-align: left;
+  }
+  .personal {
+    margin-top: 2%;
+  }
+}
+
+/* ----------------------------------------------------------------------------- Contact page*/
+
+.form {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.button {
+  text-align: right;
+  margin-top: 2%;
+}
+
+@media screen and (min-width: 576px) {
+  .form {
+    margin-top: 1.5%;
+  }
+}
