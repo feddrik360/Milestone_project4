@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "gallery/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Login</legend>
+            {{ form|crispy }}
+            <button class="btn btn-dark button" type="submit">Login</button>
+        </fieldset>
+        <p>Dont have an account? <a href="{% url 'register' %}">Register</a></p>
+    </form>
+</div>
+{% endblock content %}

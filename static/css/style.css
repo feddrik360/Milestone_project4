@@ -4,65 +4,6 @@ body {
 
 /*------------------------------------------------------------ Nav bar*/
 
-.nav {
-  border-style: solid;
-  border-width: 5px;
-  border-radius: 20px;
-}
-
-.nav-item {
-  text-align: center;
-  margin: 0;
-}
-
-.nav-link {
-  color: #1e2126;
-  display: block;
-}
-
-.nav-link:hover {
-  color: #c4c9d1;
-}
-
-.nav {
-  width: 100%;
-}
-
-@media screen and (min-width: 576px) {
-  .navbar {
-    display: inline;
-  }
-  .main-bar {
-    text-align: center;
-    margin: 0;
-    width: 100%;
-    display: inline-block;
-  }
-  .nav {
-    border-style: none;
-    display: inline-block;
-    text-align: center;
-    margin-top: 30px;
-    padding-bottom: 20px;
-  }
-  .nav-item {
-    display: inline-block;
-    text-align: center;
-    padding-left: 1%;
-    padding-right: 1%;
-    font-size: 15px;
-    font-weight: 400;
-    position: relative;
-  }
-
-  .navbar-brand {
-    display: none;
-  }
-}
-
-.navbar-light .navbar-nav .active>.nav-link:hover {
-  color: #bec4ce;
-}
 
 /*----------------------------------------------------------------------------------- Home page section*/
 
