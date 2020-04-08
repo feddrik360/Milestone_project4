@@ -1,5 +1,6 @@
 {% extends 'gallery/base.html' %}
 {% block content %}
+{% load static %}
 <div class="container-fluid">
     <div class="home-page-container">
         <div class="row">
@@ -14,7 +15,7 @@
                 </div>
             </div>
             <div class="col-md-8 col-sm-8 col-12  main-image ">
-                <img class="main-image" src="Images/home-image.png" alt="Home-image">
+                <img class="main-image" src="{% static 'img/home-image.png' %}" alt="Home-image">
             </div>
         </div>
     </div>

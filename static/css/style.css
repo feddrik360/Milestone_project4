@@ -4,7 +4,9 @@ body {
 
 /*------------------------------------------------------------ Nav bar*/
 
-
+nav {
+/*    background-color: #1a1b1c; */
+}
 /*----------------------------------------------------------------------------------- Home page section*/
 
 section {
@@ -102,6 +104,7 @@ a:link {
 
 /* --------------------------------------------------------------------------- Works*/
 
+
 .w-100 {
     height: 150px;
     width: 100%;
@@ -113,12 +116,13 @@ a:link {
     cursor: pointer;
 }
 
+/*
 .page-image {
-    border-width: 2px;
+    border-width: 5px;
     border-style: solid;
     border-color: white;
 }
-
+*/
 @media screen and (min-width: 320px) {
     .d-block {
         height: 250px !important;

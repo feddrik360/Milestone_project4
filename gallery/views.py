@@ -29,3 +29,8 @@ def photos(request):
 def photo(request, id):
     photo = Photo.objects.get(id=id)
     return render(request, 'gallery/photo.html', {"photo": photo})
+
+
+def search(request):
+    photos = Photo.objects.filter(title__icontains=request.GET['q'])
+    return render(request, "gallery/gallery.html", {"photos": photos})
