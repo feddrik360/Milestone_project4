@@ -5,8 +5,9 @@ body {
 /*------------------------------------------------------------ Nav bar*/
 
 nav {
-/*    background-color: #1a1b1c; */
+    /*    background-color: #1a1b1c; */
 }
+
 /*----------------------------------------------------------------------------------- Home page section*/
 
 section {
@@ -103,7 +104,14 @@ a:link {
 }
 
 /* --------------------------------------------------------------------------- Works*/
+.Photo {
+    padding-top: 2%;
+}
 
+.Photo-header {
+    text-align: center;
+    font-size: 50%;
+}
 
 .w-100 {
     height: 150px;
@@ -127,6 +135,7 @@ a:link {
     .d-block {
         height: 250px !important;
     }
+
 }
 
 @media screen and (min-width: 576px) {
@@ -134,8 +143,8 @@ a:link {
         height: 125px !important;
     }
 
-    .d-block {
-        height: 300px !important;
+    .Photo-header {
+        font-size: 60%;
     }
 }
 
@@ -144,8 +153,8 @@ a:link {
         height: 175px !important;
     }
 
-    .d-block {
-        height: 350px !important;
+    .Photo-header {
+        font-size: 70%;
     }
 }
 
@@ -153,19 +162,11 @@ a:link {
     .w-100 {
         height: 225px !important;
     }
-
-    .d-block {
-        height: 400px !important;
+     .Photo-header {
+        font-size: 80%;
     }
 }
 
-.d-block {
-    object-fit: cover;
-}
-
-.modal-content {
-    width: 95%;
-}
 
 .Works-header {
     text-align: center;
@@ -173,19 +174,6 @@ a:link {
     margin-bottom: 5%;
 }
 
-@media screen and (min-width: 576px) {
-    .Works-header {
-        margin-top: 2.5%;
-        margin-bottom: 2.5%;
-    }
-}
-
-@media screen and (min-width: 576px) {
-    .Works-header {
-        margin-top: 2.5%;
-        margin-bottom: 2.5%;
-    }
-}
 
 /* --------------------------- Exhibitions*/
 

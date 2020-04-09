@@ -4,7 +4,7 @@ from .models import Photo
 from django.contrib import messages
 
 
-# Create your views here.
+
 def home(request):
     return render(request, "gallery/home.html")
 
@@ -25,12 +25,12 @@ def photos(request):
     photos = Photo.objects.all()
     return render(request, 'gallery/gallery.html', {"photos": photos})
 
-
+# Gives the information page of image.
 def photo(request, id):
     photo = Photo.objects.get(id=id)
     return render(request, 'gallery/photo.html', {"photo": photo})
 
-
+# Search bar functionality
 def search(request):
     photos = Photo.objects.filter(title__icontains=request.GET['q'])
     return render(request, "gallery/gallery.html", {"photos": photos})
