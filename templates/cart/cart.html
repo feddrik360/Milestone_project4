@@ -1,6 +1,111 @@
 {% extends 'gallery/base.html' %}
-{% load static}
 {% block content %}
+{% load static %}
+<!--
+url({% static 'img/cart.jpg' %}) -->
+<div class="container">
+    <!-- Heading -->
+    <!-- Card -->
+    <h2 style=" color: black; text-align: center" class=" z-depth-1">
+        <strong>Your shopping basket</strong></h2>
+    <br>
+    {% if product_count > 0 %}
+    <div class="row">
+        {% for photo in cart_items %}
+        <div class="col-12 col-sm-6 col-md-4 ">
+            <!-- Card -->
+            <div class="card">
+                <!-- Card image -->
+                <img class="card-img-top" src="{{ photo.product.image.url }}" alt="Card image cap">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><a> {{ photo.product.title }}</a></h4>
+                    <!-- Text -->
+                </div>
+                <div class="card-footer">
+                    <form class="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Quantity </label>
+                            <div class="input-group">
 
+                                <input name="quantity" type="number" min="0" max="999" class="form-control"
+                                       value="{{ photo.quantity}}">
 
+                            </div>
+                        </div>
+                        <a href="{% url 'adjust_cart' photo.id %}" style="text-align: right;" class="btn badge-warning"><span
+                                class="glyphicon glyphicon-edit"
+                                aria-hidden="true"></span>Adjust
+                        </a>
+
+                        <a href="{% url 'remove_from_cart' photo.id %}" style="text-align: right;"
+                           class="btn badge-warning"><span
+                                class="glyphicon glyphicon-edit"
+                                aria-hidden="true"></span>Delete
+                        </a>
+                    </form>
+                </div>
+            </div>
+            <!-- Card -->
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-6">
+            <div style="text-align: center">
+                <h4> You have no items in your basket!</h4>
+                <span>
+        <a href="{% url 'gallery' %}" style="text-align: right;">Click here to start shopping</h6>
+                        </a>
+    </span>
+            </div>
+        </div>
+        <div class="col-6">
+            <div style="text-align: center;">
+                <span><h4>Need an account? </h4></span>
+                <span> <a href="{% url 'register' %}" style="text-align: right;">Sign up here
+                   </a></span>
+                <br>
+                <span><h4>Have an account? </h4></span>
+                <span><a href="{% url 'login' %}" style=" display: inline-block; text-align: right;">Login here</h6>
+                    </a></span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- Card -->
+    <div>
+        <p class="mx-5 mb-5">
+        </p>
+        <a class="btn btn-outline-white btn-md"><i class="fas fa-clone left"></i> Cart</a>
+        <!-- Cart -->
+        <ul class="list-group mb-3 z-depth-1">
+            {% for photo in cart_items %}
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0">{{ photo.product.title }}</h6>
+                </div>
+                <!-- This is to work out the total -->
+                <span class="text-muted">£{% widthratio photo.product.price 1 photo.quantity %}</span>
+                <!-- This is to work out the total -->
+            </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between">
+                <strong> Total (GBP)</strong>
+                <strong>£{{ total }}</strong>
+            </li>
+            {% if product_count > 0 %}
+            <li style="text-align: right;" class="list-group-item d-flex justify-content-between">
+                <strong>Ready to Checkout?</strong>
+                <a style="text-align: right;" href="{% url 'checkout' %}" class="btn badge-warning" role="button"><span
+                        class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+</div>
 {% endblock %}

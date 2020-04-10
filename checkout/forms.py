@@ -16,7 +16,3 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Information
         fields = ('first_name', 'last_name', 'email', 'country', 'country', 'address', 'postcode',)
-
-
-
-
