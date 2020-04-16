@@ -325,3 +325,8 @@ p {
 .card {
     height:100%;
 }
+
+/* to stop the asterisk Field coming out when the django form loads */
+.asteriskField{
+    visibility: hidden;
+}

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home,  contact, about, exhibitions, photos, photo, search
+from .views import home, contact, about, exhibitions, photos, photo, search, post_comments,delete_comment
 
 urlpatterns = [
     path('', home, name='home'),
@@ -8,6 +8,7 @@ urlpatterns = [
     path('exhibitions/', exhibitions, name='exhibitions'),
     path('gallery/', photos, name='gallery'),
     path('photo/<id>/', photo, name='photo'),
-    path('search/',search, name = 'search')
-
+    path('search/', search, name='search'),
+    path('post/<id>/<user>', post_comments, name='post'),
+    path('delete/<id>/<photo_id>', delete_comment, name='delete'),
 ]

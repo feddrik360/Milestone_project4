@@ -1,6 +1,9 @@
 {% extends 'gallery/base.html' %}
 {% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
+
+
 <!-- News jumbotron -->
 <div class="jumbotron text-center hoverable p-4">
     <!-- Grid row -->
@@ -22,14 +25,14 @@
             <!-- Excerpt -->
             <h4 class="h4 mb-4">{{ photo.title }}</h4>
             <p class="font-weight-normal">Price: £{{ photo.price }}</p>
-            <p class="font-weight-normal">Date Made: {{ photo.date }}</p>
-            <p class="font-weight-normal">{{ photo.description }}</p>
+            <p class="font-weight-normal">Date Made: {{ photo.year }} </p>
+            <p class="font-weight-normal">Description: {{ photo.description }}</p>
             <form method="post" action="{% url 'add_to_cart' photo.id %}">
                 {% csrf_token %}
                 <div class="input-group">
                     <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="quantity">
                     <span class="input-group-btn">
-            <button class="btn btn-success" type="submit">Add</button>
+            <button class="btn badge-warning" type="submit">Add</button>
           </span>
                 </div>
             </form>
@@ -37,8 +40,50 @@
         <!-- Grid column -->
     </div>
     <!-- Grid row -->
+
+    <!--Comments-->
+    <div class="card card-comments mb-3 wow fadeIn">
+        <div class="card-header font-weight-bold"> {{ length }} comments</div>
+        {% for comment in comments %}
+        <div class="card-body">
+            <div class="media d-block d-md-flex mt-4">
+                <img class="d-flex mb-3 mx-auto " src=""
+                     alt="Generic placeholder image">
+                <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                    <h5 class="mt-0 font-weight-bold">{{ comment.user }}
+                        <a href="" class="pull-right">
+                            <i class="fa fa-reply"></i>
+                        </a>
+                    </h5>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+            </div>
+            {% if comment.user == user %}
+            <a href="{% url 'delete' comment.id photo.id %}"> Click here to delete</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <!--/.Comments-->
+    <!--Reply-->
+    <div class="card mb-3 wow fadeIn">
+        <div class="card-header font-weight-bold">Leave a reply</div>
+        <div class="card-body">
+            <!-- Default form reply -->
+            <form action="{%  url 'post' photo.id user.id %}" method="post">
+                <!-- Comment -->
+                <label for="replyFormComment">Your comment</label>
+                <textarea name="content" class="form-control" id="replyFormComment" rows="5"></textarea>
+                {% csrf_token %}
+                <div class="text-center mt-4">
+                    <button class="btn badge-warning btn-md" type="submit">Post</button>
+                </div>
+            </form>
+            <!-- Default form reply -->
+        </div>
+    </div>
 </div>
-<!-- News jumbotron -->
+<!--/.Reply-->
 {% endblock %}
-<!--<a href="{{ object.get_add_to_cart_url }}" class="btn btn-success">Add to cart</a>
-<a href="{{ object.get_remove_from_cart_url }}" class="btn btn-success">Remove from cart</a> -->

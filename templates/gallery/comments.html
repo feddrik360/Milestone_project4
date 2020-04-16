@@ -1,0 +1,8 @@
+{% extends 'gallery/base.html' %}
+{% block content %}
+{% load static %}
+
+{% for comment in comments %}
+<p>{{ comment.title }} </p>
+{% endfor %}
+{% endblock %}
