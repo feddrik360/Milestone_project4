@@ -7,12 +7,13 @@ from gallery.models import Photo
 from .models import Order
 import stripe
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 stripe.api_key = settings.STRIPE_SECRET
 
-
+@login_required()
 def checkout(request):
     if request.method == "POST":
         order_form = OrderForm(request.POST)

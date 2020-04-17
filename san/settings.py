@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'checkout',
     'crispy_forms',
     'blog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CART_SESSION_ID = 'cart'
 
+LOGIN_REDIRECT_URL = 'blog-home' # So that when user logs in it gets redirected here. as django puts profile by default - check the URL.
+LOGIN_URL = 'login' # If the user tries to do an action that requires login, it will be redirect to the login page.

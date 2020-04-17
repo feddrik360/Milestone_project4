@@ -1,0 +1,21 @@
+{% extends "gallery/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<!-- Jumbotron -->
+<div class="jumbotron text-center">
+    <!-- Title -->
+    <h4 class="card-title h4 pb-2"><strong>Check out my profile</strong></h4>
+    <!-- Card image -->
+    <div class="view overlay my-4">
+        <img src="{{ profile.image.url }}" class="img-fluid" alt="">
+        <a href="#">
+            <div class="mask rgba-white-slight"></div>
+        </a>
+    </div>
+    <h5 class="indigo-text h5 mb-4">{{ profile.user.first_name }}</h5>
+    <p class="card-text"> {{ profile.description }}</p>
+    <br>
+</div>
+<!-- Jumbotron -->
+{% endblock %}

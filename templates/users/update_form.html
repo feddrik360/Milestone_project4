@@ -1,0 +1,14 @@
+{% extends "gallery/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <form method="POST">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Update Your Profile</legend>
+            {{ form|crispy}}
+            {% csrf_token %}
+        </fieldset>
+        <button class="btn badge-warning" type="submit">Update</button>
+    </form>
+</div>{% endblock %}

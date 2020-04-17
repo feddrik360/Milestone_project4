@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .form import Registration
+from .form import Registration,UpdateProfile
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import auth
+from . models import Profile
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -44,3 +46,24 @@ def logout(request):
     auth.logout(request)
     messages.info(request, 'You have been logged out.')
     return redirect('/')
+
+def profile(request ):
+    return render(request, "users/profile.html",)
+
+def update_profile(request):
+    if request.method == 'POST':
+        Update_form =UpdateProfile(request.POST,request.FILES, instance = request.user.profile)
+        if Update_form.is_valid():
+            Update_form.save()
+            messages.success(request, f'Your profile has been updated')
+            return render(request, 'users/profile.html')
+    else:
+        form = UpdateProfile(instance = request.user.profile)
+    return render(request, 'users/update_form.html', {"form" :form})
+
+def view_profile(request, id):
+    user = User.objects.get (id = id)
+    profile = Profile.objects.get( user = user )
+    return render(request, "users/view_profile.html",{"profile" : profile})
+
+

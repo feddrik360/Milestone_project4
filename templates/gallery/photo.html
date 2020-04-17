@@ -47,11 +47,11 @@
         {% for comment in comments %}
         <div class="card-body">
             <div class="media d-block d-md-flex mt-4">
-                <img class="d-flex mb-3 mx-auto " src=""
+                <img class="d-flex mb-3 mx-auto " src="{{ comment.user.profile.image.url }}"
                      alt="Generic placeholder image">
                 <div class="media-body text-center text-md-left ml-md-3 ml-0">
                     <h5 class="mt-0 font-weight-bold">{{ comment.user }}
-                        <a href="" class="pull-right">
+                        <a href=" {% url 'view_profile' comment.user.id %}" class="pull-right">
                             <i class="fa fa-reply"></i>
                         </a>
                     </h5>
@@ -67,7 +67,7 @@
         {% endfor %}
     </div>
     <!--/.Comments-->
-    <!--Reply-->
+    <!--Reply-->{% if user.is_authenticated %}
     <div class="card mb-3 wow fadeIn">
         <div class="card-header font-weight-bold">Leave a reply</div>
         <div class="card-body">
@@ -84,6 +84,8 @@
             <!-- Default form reply -->
         </div>
     </div>
+
+    {% endif %}
 </div>
 <!--/.Reply-->
 {% endblock %}

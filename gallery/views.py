@@ -5,6 +5,7 @@ from blog.models import comment
 from django.contrib import messages
 from .forms import post_comment
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -38,7 +39,7 @@ def photo(request, id):
     return render(request, 'gallery/photo.html',
                   {"photo": photo, "comments": comments, "length": length, "form": form, })
 
-
+@login_required
 def post_comments(request, id, user, ):
     photo = Photo.objects.get(id=id)
     username = User.objects.get(id=user)
