@@ -11,12 +11,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import env
+# import env
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -28,7 +27,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -79,22 +77,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'san.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-  #  'default': {
-   #     'ENGINE': 'django.db.backends.postgresql',
-    #    'NAME': 'Gallery',
-     #   'USER': 'postgres',
-      #  'PASSWORD': '1234',
-       # 'HOST': 'localhost'
-   # }
-# }
 
-DATABASES = {'default' : dj_database_url.parse(os.environ.get('DATABASE_URL'))}
-
+if "DATABASE_URL" in os.environ:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
+    print("Database URL is not found. Using Local Postgre instead")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'Gallery',
+            'USER': 'postgres',
+            'PASSWORD': '1234',
+            'HOST': 'localhost'
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -114,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -127,7 +125,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -147,7 +144,6 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -166,5 +162,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CART_SESSION_ID = 'cart'
 
-LOGIN_REDIRECT_URL = 'blog-home' # So that when user logs in it gets redirected here. as django puts profile by default - check the URL.
-LOGIN_URL = 'login' # If the user tries to do an action that requires login, it will be redirect to the login page.
+LOGIN_REDIRECT_URL = 'blog-home'  # So that when user logs in it gets redirected here. as django puts profile by default - check the URL.
+LOGIN_URL = 'login'  # If the user tries to do an action that requires login, it will be redirect to the login page.
