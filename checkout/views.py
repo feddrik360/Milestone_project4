@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from .forms import OrderForm, MakePaymentForm
 from django.utils import timezone
 from gallery.models import Photo
@@ -13,7 +12,8 @@ from django.contrib.auth.decorators import login_required
 
 stripe.api_key = settings.STRIPE_SECRET
 
-@login_required()
+
+@login_required
 def checkout(request):
     if request.method == "POST":
         order_form = OrderForm(request.POST)

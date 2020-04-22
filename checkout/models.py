@@ -2,7 +2,6 @@ from django.db import models
 from gallery.models import Photo
 
 
-
 class Information(models.Model):
     first_name = models.CharField(max_length=100, blank=False)
     last_name = models.CharField(max_length=100, blank=False)
@@ -15,6 +14,7 @@ class Information(models.Model):
 
     def __str__(self):
         return self.first_name
+
 
 class Order(models.Model):
     order = models.ForeignKey(Information, null=False, on_delete=models.CASCADE)
