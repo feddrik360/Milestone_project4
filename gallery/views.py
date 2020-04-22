@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect,reverse
 from django.views.generic import ListView, DetailView
-from .models import Photo
+from .models import Photo, Contact
 from blog.models import comment
 from django.contrib import messages
 from .forms import post_comment
@@ -13,14 +13,25 @@ def home(request):
 
 
 def exhibitions(request):
-    return render(request, 'gallery/exhibitions.html', )
+    return render(request, 'gallery/exhibitions.html',)
 
 
 def about(request):
-    return render(request, 'gallery/about.html.', )
+    return render(request, 'gallery/about.html.',)
 
 
 def contact(request):
+    if request.method == 'POST':
+        forename = request.POST['forename']
+        print(forename)
+        surname = request.POST['surname']
+        email = request.POST['email']
+        message = request.POST['message']
+        form = Contact(forename=forename, surname=surname, email=email,
+                       message=message)
+        form.save()
+        messages.info(request, 'Your form has been submitted!')
+        return redirect(reverse('contact'))
     return render(request, 'gallery/contact.html.', )
 
 
@@ -39,6 +50,7 @@ def photo(request, id):
     return render(request, 'gallery/photo.html',
                   {"photo": photo, "comments": comments, "length": length, "form": form, })
 
+
 @login_required
 def post_comments(request, id, user, ):
     photo = Photo.objects.get(id=id)
@@ -54,7 +66,7 @@ def post_comments(request, id, user, ):
         return redirect('/')
 
 
-def delete_comment(request, id, photo_id,):
+def delete_comment(request, id, photo_id, ):
     post = comment.objects.get(id=id)
     post.delete()
     photo = Photo.objects.get(id=photo_id)

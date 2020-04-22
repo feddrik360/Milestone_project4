@@ -29,8 +29,8 @@ def checkout(request):
             for id, quantity in cart.items():
                 product = get_object_or_404(Photo, pk=id)
                 total += quantity * product.price
-                Order = Order(order=order, product=product, quantity=quantity)
-                Order.save()
+                Orders = Order(order=order, product=product, quantity=quantity)
+                Orders.save()
 
             try:
                 customer = stripe.Charge.create(
@@ -41,16 +41,16 @@ def checkout(request):
                 )
 
             except stripe.error.CardError:
-                messages.error(request, "Your card was declined!")
+                messages.info(request, "Your card was declined!")
             if customer.paid:
-                messages.error(request, "You have successfully paid")
+                messages.success(request, "You have successfully paid")
                 request.session['cart'] = {}
                 return redirect(reverse('gallery'))
             else:
-                messages.error(request, "Unable to take payment")
+                messages.info(request, "Unable to take payment")
         else:
             print(payment_form.errors)
-            messages.error(request, "We were unable to take a payment with that card!")
+            messages.info(request, "We were unable to take a payment with that card!")
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()

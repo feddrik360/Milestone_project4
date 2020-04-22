@@ -4,22 +4,23 @@
     <div class="row">
         <div class="col-1 col-sm-2"></div>
         <div class="col-10 col-sm-8 form">
-            <form class="form">
+            <form action="{% url 'contact' %}" method="POST" class="form">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Forename</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="name" required>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="forename" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput2">Surname</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput2" name="name" required>
+                    <input type="text" class="form-control" id="exampleFormControlInput2" name="surname" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput3">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput3" name="name" required>
+                    <input type="email" class="form-control" id="exampleFormControlInput3" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Enter a message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="name"
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="message"
                               required> </textarea>
                     <button type="submit" class="btn btn-dark button">SEND</button>
                 </div>

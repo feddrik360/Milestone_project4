@@ -47,3 +47,13 @@ class Order(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Contact(models.Model):
+    forename = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    message = models.TextField()
+
+
+    def __str__(self):
+        return self.forename
