@@ -6,7 +6,7 @@ url({% static 'img/cart.jpg' %}) -->
 <div class="container">
     <!-- Heading -->
     <!-- Card -->
-    <h2 style=" color: black; text-align: center" class=" z-depth-1">
+    <h2 style=" color: black; text-align: center" class=" z-depth-1 cart-header">
         <strong>Your shopping basket</strong></h2>
     <br>
     {% if product_count > 0 %}
@@ -24,24 +24,25 @@ url({% static 'img/cart.jpg' %}) -->
                     <!-- Text -->
                 </div>
                 <div class="card-footer">
-                    <form class="" method="post">
+                    <form method="post">
                         {% csrf_token %}
                         <div class="form-group">
                             <label>Quantity </label>
                             <div class="input-group">
 
-                                <input name="quantity" type="number" min="0" max="999" class="form-control"
+                                <input name="quantity" type="number" min="1" max="999" class="form-control"
                                        value="{{ photo.quantity}}">
 
                             </div>
                         </div>
-                        <a href="{% url 'adjust_cart' photo.id %}" style="text-align: right;" class="btn badge-warning"><span
+                        <a href="{% url 'adjust_cart' photo.id %}"
+                           class="btn badge-warning text-right"><span
                                 class="glyphicon glyphicon-edit"
                                 aria-hidden="true"></span>Adjust
                         </a>
 
-                        <a href="{% url 'remove_from_cart' photo.id %}" style="text-align: right;"
-                           class="btn badge-warning"><span
+                        <a href="{% url 'remove_from_cart' photo.id %}"
+                           class="btn badge-warning text-right"><span
                                 class="glyphicon glyphicon-edit"
                                 aria-hidden="true"></span>Delete
                         </a>
@@ -55,22 +56,22 @@ url({% static 'img/cart.jpg' %}) -->
     {% else %}
     <div class="row">
         <div class="col-6">
-            <div style="text-align: center">
+            <div class="text-center">
                 <h4> You have no items in your basket!</h4>
                 <span>
-        <a href="{% url 'gallery' %}" style="text-align: right;">Click here to start shopping</h6>
+        <a class="text-right" href="{% url 'gallery' %}">Click here to start shopping</h6>
                         </a>
     </span>
             </div>
         </div>
         <div class="col-6">
-            <div style="text-align: center;">
+            <div class="text-center">
                 <span><h4>Need an account? </h4></span>
-                <span> <a href="{% url 'register' %}" style="text-align: right;">Sign up here
+                <span> <a class="text-right" href="{% url 'register' %}">Sign up here
                    </a></span>
                 <br>
-                <span><h4>Have an account? </h4></span>
-                <span><a href="{% url 'login' %}" style=" display: inline-block; text-align: right;">Login here</h6>
+                <span><h4>Have an account</h4></span>
+                <span><a class="account-link" href="{% url 'login' %}">Login here</h6>
                     </a></span>
             </div>
         </div>
@@ -98,9 +99,9 @@ url({% static 'img/cart.jpg' %}) -->
                 <strong>£{{ total }}</strong>
             </li>
             {% if product_count > 0 %}
-            <li style="text-align: right;" class="list-group-item d-flex justify-content-between">
+            <li style="" class="list-group-item d-flex justify-content-between text-right">
                 <strong>Ready to Checkout?</strong>
-                <a style="text-align: right;" href="{% url 'checkout' %}" class="btn badge-warning" role="button"><span
+                <a href="{% url 'checkout' %}" class="btn badge-warning text-right" role="button"><span
                         class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
             </li>
             {% endif %}

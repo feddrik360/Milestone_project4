@@ -21,9 +21,6 @@ class Photo(models.Model):
     def get_absolute_url(self):
         return reverse("photo", kwargs={'slug': self.slug,})
 
-
-
-
 class comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
@@ -32,12 +29,6 @@ class comment(models.Model):
 
     def __str__(self):
         return self.user
-
-
-
-
-
-
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

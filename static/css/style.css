@@ -326,3 +326,19 @@ p {
 .comment-content{
     font-size: 90%;
 }
+/* ----------------------------------------------------------------------------- Cart*/
+.cart-header{
+    color:black;
+    text-align: center;
+}
+
+.text-right{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+.account-link{
+    display: inline-block;
+    text-align: right;
+}
