@@ -1,13 +1,6 @@
 body {
     background-color: #f2f3f7;
 }
-
-/*------------------------------------------------------------ Nav bar*/
-
-nav {
-    /*    background-color: #1a1b1c; */
-}
-
 /*----------------------------------------------------------------------------------- Home page section*/
 
 section {
@@ -124,14 +117,6 @@ a:link {
 .w-100:hover {
     cursor: pointer;
 }
-
-/*
-.page-image {
-    border-width: 5px;
-    border-style: solid;
-    border-color: white;
-}
-*/
 @media screen and (min-width: 320px) {
     .d-block {
         height: 250px !important;
@@ -321,7 +306,7 @@ p {
         margin-top: 1.5%;
     }
 }
-/* ----------------------------------------------------------------------------- Contact page*/
+
 .card {
     height:100%;
 }
@@ -329,4 +314,15 @@ p {
 /* to stop the asterisk Field coming out when the django form loads */
 .asteriskField{
     visibility: hidden;
+}
+
+/* ----------------------------------------------------------------------------- Photo page*/
+.media-body{
+    margin-right: 2%; !important;
+}
+.media{
+    width:100%;
+}
+.comment-content{
+    font-size: 90%;
 }

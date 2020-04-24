@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 # Create your models here.
@@ -18,17 +19,25 @@ class Photo(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("photo", kwargs={'slug': self.slug, })
+        return reverse("photo", kwargs={'slug': self.slug,})
 
 
-# def get_add_to_cart_url(self):
-#    return reverse("add_to_cart", kwargs={'id': self.id})
-
-# def get_remove_from_cart_url(self):
-#    return reverse("remove", kwargs={'slug': self.slug})
 
 
-# Create your models here.
+class comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    date_posted = models.DateTimeField(default=timezone.now)
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user
+
+
+
+
+
+
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

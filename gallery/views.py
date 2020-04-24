@@ -1,11 +1,10 @@
-from django.shortcuts import render, get_object_or_404, redirect,reverse
-from django.views.generic import ListView, DetailView
-from .models import Photo, Contact
-from blog.models import comment
+from django.shortcuts import render,redirect, reverse
+from .models import Photo, Contact, comment
 from django.contrib import messages
 from .forms import post_comment
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def home(request):
@@ -13,11 +12,11 @@ def home(request):
 
 
 def exhibitions(request):
-    return render(request, 'gallery/exhibitions.html',)
+    return render(request, 'gallery/exhibitions.html', )
 
 
 def about(request):
-    return render(request, 'gallery/about.html.',)
+    return render(request, 'gallery/about.html.', )
 
 
 def contact(request):
@@ -43,25 +42,32 @@ def photos(request):
 # Gives the information page of image.
 def photo(request, id):
     photo = Photo.objects.get(id=id)
+    length = len(comment.objects.filter(
+        photo=photo)) # To pass across how many comments have been made
     comments = comment.objects.filter(
         photo=photo)  # So that we only show the comments that have been made on that particular photo.
-    length = len(comments)  # so that the user can knows how many comments have been made.
+    page = request.GET.get('page')
+    paginator = Paginator(comments, 4)
+    try:
+        comments = paginator.page(page)
+    except PageNotAnInteger:
+        comments = paginator.page(1)
+    except EmptyPage:
+        comments = paginator.page(paginator.num_pages)
     form = post_comment()
     return render(request, 'gallery/photo.html',
                   {"photo": photo, "comments": comments, "length": length, "form": form, })
 
 
 @login_required
-def post_comments(request, id, user, ):
+def post_comments(request, id, user,):
     photo = Photo.objects.get(id=id)
     username = User.objects.get(id=user)
     if request.method == 'POST':
         content = request.POST['content']
         form = comment(user=username, content=content, photo=photo)
         form.save()
-        comments = comment.objects.filter(photo=photo)
-        length = len(comments)
-        return render(request, "gallery/photo.html", {"photo": photo, "comments": comments, "length": length})
+        return redirect(reverse('photo', kwargs={'id': id}))
     else:
         return redirect('/')
 
@@ -69,11 +75,7 @@ def post_comments(request, id, user, ):
 def delete_comment(request, id, photo_id, ):
     post = comment.objects.get(id=id)
     post.delete()
-    photo = Photo.objects.get(id=photo_id)
-    comments = comment.objects.filter(photo=photo)
-    lengths = len(comments)
-    print(lengths)
-    return render(request, "gallery/photo.html", {"photo": photo, "comments": comments, "length": lengths})
+    return redirect(reverse('photo', kwargs={'id': photo_id}))
 
 
 # Search bar functionality

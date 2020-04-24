@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-# import env
+
 import dj_database_url
+# import env
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,6 +32,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['freds-ecommerce.herokuapp.com','127.0.0.1']
 
+
+
+LOCAL_STATUS = os.environ.get("LOCAL")
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,7 +49,6 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'crispy_forms',
-    'blog',
     'users',
     'storages',
 ]
