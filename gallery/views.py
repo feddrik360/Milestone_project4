@@ -12,11 +12,11 @@ def home(request):
 
 
 def exhibitions(request):
-    return render(request, 'gallery/exhibitions.html', )
+    return render(request, 'gallery/exhibitions.html',)
 
 
 def about(request):
-    return render(request, 'gallery/about.html.', )
+    return render(request, 'gallery/about.html',)
 
 
 def contact(request):
@@ -31,7 +31,7 @@ def contact(request):
         form.save()
         messages.info(request, 'Your form has been submitted!')
         return redirect(reverse('contact'))
-    return render(request, 'gallery/contact.html.', )
+    return render(request, 'gallery/contact.html',)
 
 
 def photos(request):

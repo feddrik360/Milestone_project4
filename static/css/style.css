@@ -318,7 +318,7 @@ p {
 
 /* ----------------------------------------------------------------------------- Photo page*/
 .media-body{
-    margin-right: 2%; !important;
+    margin-left: 2%; !important;
 }
 .media{
     width:100%;
