@@ -63,7 +63,7 @@ If I was to go back and have more time on this project, I would like to add a fe
 - PostgreSQL
 -  Javascript
 
-#Testing
+# Testing
 
 Please see separate testing file.
 
@@ -74,7 +74,7 @@ Please see separate testing file.
 - I also manually removed some errors from my code, such as stranded tags.
 
 
-#Deployement
+# Deployement
 This project is hosted on Heruko on https://freds-ecommerce.herokuapp.com/
 
 ### Local deployement:
