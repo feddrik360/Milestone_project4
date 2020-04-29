@@ -46,8 +46,6 @@ def photos(request):
 # Gives the information page of image.
 def photo(request, id):
     photo = Photo.objects.get(id=id)
-    length = len(comment.objects.filter(
-        photo=photo))  # To pass across how many comments have been made
     comments = comment.objects.filter(
         photo=photo)  # So that we only show the comments that have been made on that particular photo.
     page = request.GET.get('page')
@@ -60,7 +58,7 @@ def photo(request, id):
         comments = paginator.page(paginator.num_pages)
     form = post_comment()
     return render(request, 'gallery/photo.html',
-                  {"photo": photo, "comments": comments, "length": length, "form": form, })
+                  {"photo": photo, "comments": comments, "form": form, })
 
 
 @login_required

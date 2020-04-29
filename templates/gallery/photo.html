@@ -44,11 +44,12 @@
 
     <!-- Comments -->
     <div class="container">
+        <h5 class="text-center"> Comments</h5>
         {% for comment in comments %}
         <div class="row">
             <div class="media">
                 <div class="media-left">
-                    <img src="{{ comment.user.profile.image.url }}" class="media-object" alt = "User-profile">
+                    <img src="{{ comment.user.profile.image.url }}" class="media-object " alt = "User-profile">
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading title">{{ comment.user }}</h4>
