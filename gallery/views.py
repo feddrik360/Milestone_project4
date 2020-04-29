@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect, reverse
+from django.shortcuts import render, redirect, reverse
 from .models import Photo, Contact, comment
 from django.contrib import messages
 from .forms import post_comment
@@ -11,12 +11,8 @@ def home(request):
     return render(request, "gallery/home.html")
 
 
-def exhibitions(request):
-    return render(request, 'gallery/exhibitions.html',)
-
-
 def about(request):
-    return render(request, 'gallery/about.html',)
+    return render(request, 'gallery/about.html', )
 
 
 def contact(request):
@@ -31,11 +27,19 @@ def contact(request):
         form.save()
         messages.info(request, 'Your form has been submitted!')
         return redirect(reverse('contact'))
-    return render(request, 'gallery/contact.html',)
+    return render(request, 'gallery/contact.html', )
 
 
 def photos(request):
     photos = Photo.objects.all()
+    page = request.GET.get('page')
+    paginator = Paginator(photos, 4)
+    try:
+        photos = paginator.page(page)
+    except PageNotAnInteger:
+        photos = paginator.page(1)
+    except EmptyPage:
+        photos = paginator.page(paginator.num_pages)
     return render(request, 'gallery/gallery.html', {"photos": photos})
 
 
@@ -43,11 +47,11 @@ def photos(request):
 def photo(request, id):
     photo = Photo.objects.get(id=id)
     length = len(comment.objects.filter(
-        photo=photo)) # To pass across how many comments have been made
+        photo=photo))  # To pass across how many comments have been made
     comments = comment.objects.filter(
         photo=photo)  # So that we only show the comments that have been made on that particular photo.
     page = request.GET.get('page')
-    paginator = Paginator(comments, 4)
+    paginator = Paginator(comments, 2)
     try:
         comments = paginator.page(page)
     except PageNotAnInteger:
@@ -60,7 +64,7 @@ def photo(request, id):
 
 
 @login_required
-def post_comments(request, id, user,):
+def post_comments(request, id, user, ):
     photo = Photo.objects.get(id=id)
     username = User.objects.get(id=user)
     if request.method == 'POST':
@@ -81,4 +85,12 @@ def delete_comment(request, id, photo_id, ):
 # Search bar functionality
 def search(request):
     photos = Photo.objects.filter(title__icontains=request.GET['q'])
+    page = request.GET.get('page')
+    paginator = Paginator(photos, 4)
+    try:
+        photos = paginator.page(page)
+    except PageNotAnInteger:
+        photos = paginator.page(1)
+    except EmptyPage:
+        photos = paginator.page(paginator.num_pages)
     return render(request, "gallery/gallery.html", {"photos": photos})

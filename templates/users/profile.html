@@ -8,10 +8,7 @@
     <h4 class="card-title h4 pb-2"><strong>Check out my profile</strong></h4>
     <!-- Card image -->
     <div class="view overlay my-4">
-        <img src="{{ user.profile.image.url }}" class="img-fluid" alt="">
-        <a href="#">
-            <div class="mask rgba-white-slight"></div>
-        </a>
+        <img src="{{ user.profile.image.url }}" class="img-fluid" alt="User profile image">
     </div>
     <h5 class="indigo-text h5 mb-4">{{ user.profile.user.first_name }}</h5>
     <p class="card-text"> {{ user.profile.description }}</p>

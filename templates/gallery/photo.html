@@ -29,7 +29,8 @@
             <form method="post" action="{% url 'add_to_cart' photo.id %}">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="quantity">
+                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="quantity"
+                           required>
                     <span class="input-group-btn">
             <button class="btn btn-dark button" type="submit">Add</button>
           </span>
@@ -40,26 +41,28 @@
         <!-- Grid column -->
     </div>
     <!-- Grid row -->
-    </section>
+
     <!-- Comments -->
     <div class="container">
         {% for comment in comments %}
         <div class="row">
             <div class="media">
                 <div class="media-left">
-                    <img src="{{ comment.user.profile.image.url }}" class="media-object" style="width:100px">
+                    <img src="{{ comment.user.profile.image.url }}" class="media-object" style="width:100px" alt = "User-profile">
                 </div>
-                <div  class="media-body">
-                    <h4 style="" class="media-heading title">{{ comment.user }}</h4>
-                    <p  class="comment-content" >
+                <div class="media-body">
+                    <h4 class="media-heading title">{{ comment.user }}</h4>
+                    <p class="comment-content">
                         {{ comment.content }}<br>
+                    </p>
+                    <p>
+                        {{ comment.date_posted }}
                     </p>
                 </div>
             </div>
             {% if comment.user == user %}
-            <div style="text-align: right" class="media-right">
-                <a class=""
-                   href="{% url 'delete' comment.id photo.id %}">Delete</a>
+            <div class="media-right">
+                <a href="{% url 'delete' comment.id photo.id %}">Delete</a>
             </div>
             {% endif %}
         </div>

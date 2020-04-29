@@ -65,5 +65,3 @@ def view_profile(request, id):
     user = User.objects.get (id = id)
     profile = Profile.objects.get( user = user )
     return render(request, "users/view_profile.html",{"profile" : profile})
-
-

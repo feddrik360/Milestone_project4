@@ -4,7 +4,7 @@
 <form class="form-inline my-0 my-lg-0 ml-auto" action="{% url 'search' %}">
     <label></label>
     <input name="q" class="form-control" type="search" placeholder="Search for Image " aria-label="Search"
-           method="get">
+           >
 </form>
 <div class="works-page-container">
     <div class="row">
@@ -13,11 +13,11 @@
             <h4 class="Photo-header"> {{ photo.title }}</h4>
             <a href="{% url 'photo' photo.id %}">
                 <img class="w-100 page-image" src="{{ photo.image.url }}" alt="First image"
-                     data-target="#carouselExample"
-                     data-slide-to="{{ photo.slug }}">
             </a>
         </div>
         {% endfor %}
     </div>
 </div>
+<br>
+{% include "gallery/pagination.html" with page=photos %}
 {% endblock %}
