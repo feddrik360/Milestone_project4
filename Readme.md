@@ -75,7 +75,7 @@ Please see separate testing file.
 
 
 #Deployement
-This project is hosted on Heruko. 
+This project is hosted on Heruko on https://freds-ecommerce.herokuapp.com/
 
 ### Local deployement:
 
