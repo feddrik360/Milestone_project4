@@ -13,7 +13,7 @@
             <!-- Featured image -->
             <div class="view overlay">
                 <img src="{{ photo.image.url }}" class="img-fluid"
-                     alt="Sample image for first version of blog listing">
+                     alt="Photo Image">
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
@@ -49,7 +49,9 @@
         <div class="row">
             <div class="media">
                 <div class="media-left">
-                    <img src="{{ comment.user.profile.image.url }}" class="media-object " alt = "User-profile">
+                    <a href="{% url 'view_profile' comment.user.id  %}">
+                        <img src="{{ comment.user.profile.image.url }}" class="media-object " alt="User-profile">
+                    </a>
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading title">{{ comment.user }}</h4>
@@ -72,12 +74,10 @@
     </div>
     {% include "gallery/pagination.html" with page=comments %}
     <!--/.Comments-->
-    <!--Reply-->
     {% if user.is_authenticated %}
     <div class="card mb-3 wow fadeIn">
         <div class="card-header font-weight-bold">Leave a reply</div>
         <div class="card-body">
-            <!-- Default form reply -->
             <form action="{%  url 'post' photo.id user.id %}" method="post">
                 <!-- Comment -->
                 <label for="replyFormComment">Your comment</label>
@@ -88,7 +88,6 @@
                     <button class="btn btn-dark button btn-md" type="submit">Post</button>
                 </div>
             </form>
-            <!-- Default form reply -->
         </div>
     </div>
     {% endif %}
