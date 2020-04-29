@@ -74,10 +74,10 @@ Please see separate testing file.
 - I also manually removed some errors from my code, such as stranded tags.
 
 
-# Deployement
+# Deployment
 This project is hosted on Heruko on https://freds-ecommerce.herokuapp.com/
 
-### Local deployement:
+### Local deployment:
 
 1.) I created an env.py file in the my root directory and added all the following information on it:
 
