@@ -33,7 +33,7 @@ def contact(request):
 def photos(request):
     photos = Photo.objects.all()
     page = request.GET.get('page')
-    paginator = Paginator(photos, 4)
+    paginator = Paginator(photos, 12)
     try:
         photos = paginator.page(page)
     except PageNotAnInteger:
