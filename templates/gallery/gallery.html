@@ -12,7 +12,7 @@
         <div class="col-6 col-sm-4 col-lg-3 Photo">
             <h4 class="Photo-header"> {{ photo.title }}</h4>
             <a href="{% url 'photo' photo.id %}">
-                <img class="w-100 page-image" src="{{ photo.image.url }}" alt="First image"
+                <img class="w-100 page-image" src="{{ photo.image.url }}" alt="First image">
             </a>
         </div>
         {% endfor %}

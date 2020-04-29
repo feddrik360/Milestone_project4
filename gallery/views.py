@@ -51,7 +51,7 @@ def photo(request, id):
     comments = comment.objects.filter(
         photo=photo)  # So that we only show the comments that have been made on that particular photo.
     page = request.GET.get('page')
-    paginator = Paginator(comments, 2)
+    paginator = Paginator(comments, 4)
     try:
         comments = paginator.page(page)
     except PageNotAnInteger:

@@ -256,6 +256,9 @@ a:link {
 .comment-content{
     font-size: 90%;
 }
+.media-object{
+    width: 100px;
+}
 /* ----------------------------------------------------------------------------- Cart*/
 .cart-header{
     color:black;
@@ -271,4 +274,9 @@ a:link {
 .account-link{
     display: inline-block;
     text-align: right;
+}
+
+/* ----------------------------------------------------------------------------- Cart*/
+#credit-card-errors{
+    display: none;
 }
