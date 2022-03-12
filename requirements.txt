@@ -24,7 +24,7 @@ jmespath==0.9.5
 MarkupSafe==1.1.1
 oauthlib==3.1.0
 path==13.1.0
-Pillow==7.0.0
+Pillow==9.0.1
 plotly==4.4.1
 psycopg2==2.8.4
 pymongo==3.10.0
